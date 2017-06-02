@@ -19,14 +19,14 @@ public class DotCom {
     }
 
     public String checkYourself(String userInput) {
-        String result = "ìèìî";
+        String result = "Мимо";
         int index = locationCeels.indexOf(userInput);
         if (index >= 0) {
             locationCeels.remove(index);
             if (locationCeels.isEmpty()) {
-                result = "ïîòîïèë";
+                result = "Потопил";
             } else {
-                result = "Ïîïàë";
+                result = "Попал";
             }
         }
         return result;

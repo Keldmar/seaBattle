@@ -20,9 +20,9 @@ public class Game {
         dotComsList.add(one);
         dotComsList.add(two);
         dotComsList.add(three);
-        System.out.println("Âàøà öåëü - ïîòîïèòü òðè ñàéòà");
+        System.out.println("Ваша цель - потопить три сайта");
         System.out.println("Pets.com, eToys.com, Go2.com");
-        System.out.println("Ïîïûòàéòèñü ïîòîïèòü èõ çà ìèíèàëüíîå êîëè÷åñòâî õîäîâ");
+        System.out.println("Попытайтесь потопить их за минимальное количество ходов");
 
         for (DotCom dotComTest : dotComsList) {
             ArrayList<String> newLocation = helper.placeDotCom(3);
@@ -32,7 +32,7 @@ public class Game {
 
     private void startPlaying() {
         while (!dotComsList.isEmpty()) {
-            String userGuess = helper.getUserInput("Ñäåëàéòå õîä");
+            String userGuess = helper.getUserInput("Сделайте ход");
             checkUserGuess(userGuess);
         }
         finishGame();
@@ -40,13 +40,13 @@ public class Game {
 
     private void checkUserGuess(String userGuess) {
         numOfGuesses++;
-        String result = "Ìèìî";
+        String result = "Мимо";
         for (DotCom dotComTest : dotComsList) {
             result = dotComTest.checkYourself(userGuess);
-            if (result.equals("Ïîïàë")) {
+            if (result.equals("Попал")) {
                 break;
             }
-            if (result.equals("Ïîòîïèë")) {
+            if (result.equals("Потопил")) {
                 dotComsList.remove(dotComTest);
                 break;
             }
@@ -57,11 +57,9 @@ public class Game {
     private void finishGame() {
         System.out.println();
         if (numOfGuesses <= 18) {
-            System.out.println("Ýòî çàíÿëî ó âàñ âñåãî" + numOfGuesses + " ïîïûòîê.");
-            System.out.println("Âû óñïåëè âûáðàòüñÿ äî òîãî êàê âàøè âëîæåíèÿ óòîíóëè.");
+            System.out.println("Это заняло у вас всего" + numOfGuesses + " попыток.");
         } else {
-            System.out.println("Ýòî çàíÿëî ó âàñ äîâîëüíî ìíîãî âðåìåíè" + numOfGuesses + " ïîïûòîê");
-            System.out.println("Ðûáû âîäÿò õîðîâîäû âîêðóã âàøèõ âëîæåíèé");
+            System.out.println("Это заняло у вас довольно много времени" + numOfGuesses + " попыток");
         }
     }
 
